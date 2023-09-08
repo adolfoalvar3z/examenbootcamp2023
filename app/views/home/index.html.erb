@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Columna para el listado de mascotas -->
+    <div class="col-md-6">
+      <h2>Mascotas Disponibles para Citas</h2>
+      <% @mascotas.each do |mascota|%>
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3><%= mascota.nombre %></h3>
+            <p>Especie: <%= mascota.especie %></p>
+            <p>Raza: <%= mascota.raza %></p>
+            <p>Dueño: <%= mascota.cliente.nombre %></p>
+          </div>
+        </div>
+      <% end %>
+      <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+    <!-- Columna para el formulario de citas -->
+    <div class="col-md-6">
+      <h2>Programar Nueva Cita</h2>
+      <div class="card">
+        <div class="card-body">
+
+          <form >
+            <div class="mb-3">
+              <label for="date" class="form-label">Fecha:</label>
+              <input type="date" id="date" name="date" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="time" class="form-label">Hora:</label>
+              <input type="time" id="time" name="time" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="pet" class="form-label">Mascota:</label>
+              <select id="pet" name="pet" class="form-control">
+                <option value="mascota1">Mascota 1</option>
+                <option value="mascota2">Mascota 2</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="vet" class="form-label">Veterinario:</label>
+              <input type="text" id="vet" name="vet" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Programar Cita</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @mascotum %>
+
+<div>
+  <%= link_to "Edit this mascotum", edit_mascotum_path(@mascotum) %> |
+  <%= link_to "Back to mascota", mascota_path %>
+
+  <%= button_to "Destroy this mascotum", @mascotum, method: :delete %>
+</div>

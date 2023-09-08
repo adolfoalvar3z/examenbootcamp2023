@@ -1,0 +1,48 @@
+<%= form_with(model: mascotum, local: true, html: { class: "form" }) do |form| %>
+  <% if mascotum.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(mascotum.errors.count, "error") %> impidieron guardar esta mascota:</h2>
+
+      <ul>
+        <% mascotum.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :foto, class: "form-label" %>
+    <%= form.file_field :foto, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :nombre, class: "form-label" %>
+    <%= form.text_field :nombre, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :especie, class: "form-label" %>
+    <%= form.select :especie, ["Canis lupus familiaris", "Canis lupus", "Canis dingo", "Canis latrans", "Canis aureus", "Canis simensis", "Canis anthus", "Canis mesomelas", "Canis adustus"],{}, class:"form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :raza, class: "form-label" %>
+    <%= form.select :raza, ["Chihuahua", "Pug", "Golden Retriever", "Labrador Retriever", "Pastor Alemán", "Beagle", "Yorkshire Terrier", "Boxer", "Bulldog Francés", "Dachshund"],{}, class:"form-select" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :fecha_nacimiento, class: "form-label" %>
+    <%= form.date_field :fecha_nacimiento, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cliente_id, class: "form-label" %>
+    <%= form.select :cliente_id, options_from_collection_for_select(@clientes, :id, :nombre),{}, class: "form-select" %>
+
+  </div>
+
+  <div>
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

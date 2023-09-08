@@ -1,0 +1,33 @@
+<h1>Cita</h1>
+<div id="cita">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>
+          <th scope="col">Duración</th>
+          <th scope="col">Veterinario</th>
+          <th scope="col">Mascota</th>
+          <th scope="col">Estado</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <% @cita.each do |citum| %>
+        <tr class="">
+          <td scope="row"><%= citum.fecha%></td>
+          <td><%= citum.hora%></td>
+          <td><%= citum.duracion%></td>
+          <td><%= citum.veterinario.nombre%></td>
+          <td><%= citum.mascota.nombre%></td>
+          <td><%= citum.estado%></td>
+          <td><%= link_to "Show this citum", citum %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+<%= link_to "New citum", new_citum_path %>
+<%== pagy_bootstrap_nav(@pagy) %>

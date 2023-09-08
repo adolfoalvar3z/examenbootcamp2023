@@ -1,0 +1,32 @@
+<%= form_with(model: veterinario, local: true, html: { class: "form" }) do |form| %>
+  <% if veterinario.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(veterinario.errors.count, "error") %> impidieron guardar este veterinario:</h2>
+
+      <ul>
+        <% veterinario.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :nombre, class: "form-label" %>
+    <%= form.text_field :nombre, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :apellido, class: "form-label" %>
+    <%= form.text_field :apellido, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :especialidad, class: "form-label" %>
+    <%= form.select :especialidad, ["general", "medicina interna", "cirugía", "oncología", "cardiología", "dermatología", "oftalmología", "ortopedia", "neurología", "reproducción", "exóticos", "fauna silvestre"],{}, class:"form-select" %>
+  </div>
+
+  <div>
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+<!-- Agrega Bootstrap y abre un contenedor -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-5">
+      <!-- Crea una tarjeta (card) para el formulario y aplica clases de color de Bootstrap -->
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <h2 class="card-title text-center">Iniciar Sesión</h2>
+          <!-- Inicia el formulario -->
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="mb-3">
+              <%= f.label :email, class: "form-label text-white" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :password, class: "form-label text-white" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="mb-3">
+                <div class="form-check">
+                  <%= f.check_box :remember_me, class: "form-check-input" %>
+                  <%= f.label :remember_me, class: "form-check-label text-white" %>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="text-center">
+              <%= f.submit "Iniciar Sesión", class: "btn btn-light" %>
+            </div>
+          <% end %>
+          <!-- Cierra el formulario -->
+
+          <!-- Puedes agregar enlaces adicionales aquí si es necesario -->
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+      <!-- Cierra la tarjeta (card) -->
+    </div>
+  </div>
+</div>
+<!-- Cierra el contenedor -->

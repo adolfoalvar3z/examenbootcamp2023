@@ -1,0 +1,28 @@
+<div id="<%= dom_id mascotum %>">
+  <% if mascotum.foto.attached?%>
+    <p>
+      <strong>Foto:</strong>
+      <%= image_tag mascotum.foto %>
+    </p>
+  <% end %>
+  <p>
+    <strong>Nombre:</strong>
+    <%= mascotum.nombre %>
+  </p>
+  <p>
+    <strong>Especie:</strong>
+    <%= mascotum.especie %>
+  </p>
+  <p>
+    <strong>Raza:</strong>
+    <%= mascotum.raza %>
+  </p>
+  <p>
+    <strong>Fecha nacimiento:</strong>
+    <%= mascotum.fecha_nacimiento %>
+  </p>
+  <p>
+    <strong>Cliente:</strong>
+    <%= mascotum.cliente_id %>
+  </p>
+</div>

@@ -1,0 +1,22 @@
+<%= form_with(model: servicio, local: true, html: { class: "form" }) do |form| %>
+  <% if servicio.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(servicio.errors.count, "error") %> impidieron guardar este servicio:</h2>
+
+      <ul>
+        <% servicio.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :nombre, class: "form-label" %>
+    <%= form.text_field :nombre, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<h1>Veterinarios</h1>
+<%= link_to "Nuevo veterinario", new_veterinario_path, class:"btn btn-primary my-3" %>
+<div id="veterinarios">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @veterinarios.each do |veterinario| %>
+          <tr class="">
+            <td scope="row"><%= veterinario.nombre %></td>
+            <td><%= veterinario.apellido %></td>
+            <td><%= veterinario.especialidad %></td>
+            <td><%= link_to "Show this veterinario", veterinario %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%== pagy_bootstrap_nav(@pagy) %>
