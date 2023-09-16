@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_08_072308) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_034747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_072308) do
     t.integer "duracion"
     t.bigint "veterinario_id", null: false
     t.bigint "mascota_id", null: false
-    t.string "estado"
+    t.string "estado", default: "pendiente"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mascota_id"], name: "index_cita_on_mascota_id"
@@ -85,13 +85,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_072308) do
     t.index ["cliente_id"], name: "index_mascota_on_cliente_id"
   end
 
-  create_table "registro_medicos", force: :cascade do |t|
-    t.text "historial_medico"
+  create_table "medical_historials", force: :cascade do |t|
+    t.text "hitorial_medico"
     t.text "notas"
     t.bigint "mascota_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mascota_id"], name: "index_registro_medicos_on_mascota_id"
+    t.index ["mascota_id"], name: "index_medical_historials_on_mascota_id"
   end
 
   create_table "servicios", force: :cascade do |t|
@@ -132,5 +132,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_072308) do
   add_foreign_key "citas_servicios", "cita", column: "cita_id"
   add_foreign_key "citas_servicios", "servicios"
   add_foreign_key "mascota", "clientes"
-  add_foreign_key "registro_medicos", "mascota", column: "mascota_id"
+  add_foreign_key "medical_historials", "mascota", column: "mascota_id"
 end

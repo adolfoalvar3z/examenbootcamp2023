@@ -15,10 +15,12 @@ protected
 
 #app/controllers/application_controller.rb
 #con esto validaremos que el usuario cumple con el rol para realizar acciones
-	def authorize_request(kind = nil)
-	    unless kind.include?(current_user.role)
-		 redirect_to root_path, notice: "Tu no tienes privilegios para realizar estas acciones"
-	    end
-	end
+    def authorize_request(kind = nil)
+        if current_user.nil?
+        redirect_to root_path, notice: "Debes iniciar sesión para acceder a esta página"
+        elsif kind && !kind.include?(current_user.role)
+        redirect_to root_path, notice: "No tienes privilegios para realizar estas acciones"
+        end
+    end
 
 end

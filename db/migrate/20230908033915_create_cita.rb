@@ -6,7 +6,7 @@ class CreateCita < ActiveRecord::Migration[7.0]
       t.integer :duracion
       t.references :veterinario, null: false, foreign_key: true
       t.references :mascota, null: false, foreign_key: true
-      t.string :estado
+      t.string :estado, default: 'pendiente'
 
       t.timestamps
     end

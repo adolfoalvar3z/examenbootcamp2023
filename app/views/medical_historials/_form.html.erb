@@ -1,0 +1,28 @@
+<%= form_with(model: medical_historial, class: "form" ) do |form| %>
+  <% if medical_historial.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(medical_historial.errors.count, "error") %> prohibited this medical_historial from being saved:</h2>
+      <ul>
+        <% medical_historial.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :hitorial_medico, class: "form-control-label" %>
+    <%= form.text_area :hitorial_medico, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :notas, class: "form-control-label" %>
+    <%= form.text_area :notas, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :mascota_id, class: "form-control-label" %>
+    <%= form.collection_select :mascota_id, Mascotum.all, :id, :nombre, { selected: params[:mascotum_id] }, class: "form-select" %>
+  </div>
+  <br>
+  <div class="form-group">
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

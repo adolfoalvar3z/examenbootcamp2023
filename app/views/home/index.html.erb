@@ -20,29 +20,31 @@
       <h2>Programar Nueva Cita</h2>
       <div class="card">
         <div class="card-body">
-
-          <form >
+          <%= form_with(model: @citum, local: true, estado: "cancelado", html: { class: "form" }) do |form| %>
             <div class="mb-3">
-              <label for="date" class="form-label">Fecha:</label>
-              <input type="date" id="date" name="date" class="form-control">
+              <%= form.label :fecha, class: "form-label" %>
+              <%= form.date_field :fecha, class: "form-control" %>
             </div>
             <div class="mb-3">
-              <label for="time" class="form-label">Hora:</label>
-              <input type="time" id="time" name="time" class="form-control">
+              <%= form.label :hora, class: "form-label" %>
+              <%= form.time_field :hora, class: "form-control" %>
             </div>
             <div class="mb-3">
-              <label for="pet" class="form-label">Mascota:</label>
-              <select id="pet" name="pet" class="form-control">
-                <option value="mascota1">Mascota 1</option>
-                <option value="mascota2">Mascota 2</option>
-              </select>
+              <%= form.label :duracion, class: "form-label" %>
+              <%= form.number_field :duracion, class: "form-control" %>
             </div>
             <div class="mb-3">
-              <label for="vet" class="form-label">Veterinario:</label>
-              <input type="text" id="vet" name="vet" class="form-control">
+              <%= form.label :veterinario_id, class: "form-label" %>
+              <%= form.select :veterinario_id, options_from_collection_for_select(@veterinarios, :id, :nombre),{}, class: "form-control" %>
             </div>
-            <button type="submit" class="btn btn-primary">Programar Cita</button>
-          </form>
+            <div class="mb-3">
+              <%= form.label :mascota_id, class: "form-label" %>
+              <%= form.select :mascota_id, options_from_collection_for_select(@mascotas, :id, :nombre),{}, class: "form-control" %>
+            </div>
+            <div>
+              <%= form.submit "Guardar", class: "btn btn-primary" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

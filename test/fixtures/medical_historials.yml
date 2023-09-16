@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  historial_medico: MyText
+  hitorial_medico: MyText
   notas: MyText
   mascota: one
 
 two:
-  historial_medico: MyText
+  hitorial_medico: MyText
   notas: MyText
   mascota: two

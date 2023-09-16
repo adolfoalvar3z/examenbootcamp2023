@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RegistroMedicoTest < ActiveSupport::TestCase
+class MedicalHistorialTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

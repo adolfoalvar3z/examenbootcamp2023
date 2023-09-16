@@ -1,0 +1,2 @@
+module MedicalHistorialsHelper
+end

@@ -1,18 +1,18 @@
 class CitaController < ApplicationController
   before_action :set_citum, only: %i[ show edit update destroy ]
 
-    #usuario normal
-    before_action only: [:index, :show] do
-      authorize_request(["vet", "admin"])
-    end
-    #usuario veterinario
-    before_action only: [:new, :edit, :create, :update] do
-      authorize_request(["vet", "admin"])
-    end
-  #usuario admin
-    before_action only: [:destroy] do
-      authorize_request(["admin"])
-    end
+  #usuario normal
+  before_action only: [:index] do
+    authorize_request(["vet", "admin"])
+  end
+  #usuario veterinario
+  before_action only: [:edit, :update] do
+    authorize_request(["vet", "admin"])
+  end
+#usuario admin
+  before_action only: [:destroy] do
+    authorize_request(["admin"])
+  end
 
   # GET /cita or /cita.json
   def index
@@ -39,10 +39,9 @@ class CitaController < ApplicationController
   # POST /cita or /cita.json
   def create
     @citum = Citum.new(citum_params)
-
     respond_to do |format|
       if @citum.save
-        format.html { redirect_to citum_url(@citum), notice: "Citum was successfully created." }
+        format.html { redirect_to root_path, notice: "Citum was successfully created." }
         format.json { render :show, status: :created, location: @citum }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,7 +54,7 @@ class CitaController < ApplicationController
   def update
     respond_to do |format|
       if @citum.update(citum_params)
-        format.html { redirect_to citum_url(@citum), notice: "Citum was successfully updated." }
+        format.html { redirect_to root_path, notice: "Citum was successfully updated." }
         format.json { render :show, status: :ok, location: @citum }
       else
         format.html { render :edit, status: :unprocessable_entity }

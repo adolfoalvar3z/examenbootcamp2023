@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   resources :cita
   resources :veterinarios
+  resources :medical_historials
   resources :mascota do
-    resources :registro_medicos
+    resources :medical_historials
   end
+
   resources :servicios
   resources :clientes
+  resources :home
 
 
   root "home#index"
